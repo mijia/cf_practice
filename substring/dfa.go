@@ -8,14 +8,17 @@ type DfaPattern struct {
 func (dfa DfaPattern) Match(text string) int {
 	data := []byte(text)
 	pattern := []byte(dfa.pattern)
-	i, j := 0, 0
-	for ; i < len(data) && j < len(pattern); i += 1 {
-		j = dfa.machine[data[i]][j]
+	for i, j := 0, 0; i < len(data) && j < len(pattern); i += 1 {
+		if states, ok := dfa.machine[data[i]]; ok {
+			j = states[j]
+		} else {
+			j = 0
+		}
+		if j == len(pattern) {
+			return i + 1 - len(pattern)
+		}
 	}
-	if j == len(pattern) {
-		return i - len(pattern)
-	}
-	return -1
+	return len(data)
 }
 
 func NewDfaPattern(pattern string) DfaPattern {

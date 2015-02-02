@@ -15,3 +15,10 @@ func TestKmpMatching(t *testing.T) {
 		t.Errorf("Should find string at index 6 but returned %d", matchedPos)
 	}
 }
+
+func TestBmMatching(t *testing.T) {
+	bmPattern := NewBmPattern("ABABAC")
+	if matchedPos := bmPattern.Match("AABACAABABACAA"); matchedPos != 6 {
+		t.Errorf("Should find string at index 6 but returned %d", matchedPos)
+	}
+}

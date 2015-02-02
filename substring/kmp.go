@@ -18,7 +18,7 @@ func (kmp KmpPattern) Match(text string) int {
 			return i + 1 - len(pattern)
 		}
 	}
-	return -1
+	return len(data)
 }
 
 func NewKmpPattern(pattern string) KmpPattern {
