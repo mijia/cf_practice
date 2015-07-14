@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	data, err := ioutil.ReadFile("p022_names.txt")
+	data, err := ioutil.ReadFile("data/p022_names.txt")
 	if err != nil {
 		panic(err)
 	}
