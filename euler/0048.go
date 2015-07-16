@@ -6,6 +6,24 @@ import (
 )
 
 func main() {
+	remain := 0
+	for i := 1; i <= 1000; i += 1 {
+		remain += selfPowerRemain(i)
+		remain = remain % 1e10
+	}
+	fmt.Println(remain)
+}
+
+func selfPowerRemain(n int) int {
+	mul := 1
+	for i := 0; i < n; i += 1 {
+		mul *= n
+		mul = mul % 1e10
+	}
+	return mul
+}
+
+func bigNumber() {
 	sum := big.NewInt(0)
 	divider := selfPower(10)
 	for i := 1; i <= 1000; i += 1 {
